@@ -3,7 +3,7 @@ var app = express();
 var path = require( 'path' );
 var bodyParser = require ( 'body-parser' );
 var urlencodedParser = bodyParser.urlencoded( { extended: true } );
-var connectionString = 
+var connectionString = process.env.DATABASE_URL || 'postgres:localhost:5432/test';
 var port = process.env.PORT || 3000;
 app.use( bodyParser.json() );
 //spin up server
