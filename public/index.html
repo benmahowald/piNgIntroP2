@@ -16,14 +16,14 @@
       </p>
       <button ng-click='addSong()'>Add Song</button> -->
       <form ng-controller='emailForm'>
-        <input type="text" name="name" value="" placeholder="Name"ng-model='userName'>
-        <input type="text" name="email" value="" placeholder="Email"ng-model='userEmail'>
-        <input type="textarea" name="comment" value="" placeholder="Comment"ng-model='userComment'>
-        <input type="button" name="submit" value="" ng-click"submitContact">Submit</button>
+        <input type="text" name="name" value="" placeholder="Name" ng-model='userName'>
+        <input type="text" name="email" value="" placeholder="Email" ng-model='userEmail'>
+        <input type="textarea" name="comment" value="" placeholder="Comment" ng-model='userComment'>
+        <button ng-click="submitContact()">Submit</button>
+        <p>User name: {{userName}}</p>
+        <p>User email: {{userEmail}}</p>
+        <p>User comment: {{userComment}}</p>
       </form>
-      <p>User name: {{userName}}</p>
-      <p>User email: {{userEmail}}</p>
-      <p>User comment: {{userComment}}</p>
     </div>
   </body>
 </html>

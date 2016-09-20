@@ -1,10 +1,10 @@
-console.log( 'ls' );
+console.log('ls');
 
-var myApp = angular.module( 'myApp', [] );
+var myApp = angular.module('myApp', []);
 
-var allSongs=[];
-myApp.controller( 'poeDameron', [ '$scope', '$http', function( $scope, $http ){
-  console.log( 'NG' );
+// var allSongs=[];
+// myApp.controller( 'poeDameron', [ '$scope', '$http', function( $scope, $http ){
+//   console.log( 'NG' );
 
 //   $scope.addSong = function(){
 //     console.log( 'in addSong:', $scope.badSong );
@@ -29,15 +29,16 @@ myApp.controller( 'poeDameron', [ '$scope', '$http', function( $scope, $http ){
 //   }; // end add song
 // }]); // end controller
 
-myApp.controller('emailForm', ['$scope', function($scope) {
+myApp.controller('emailForm', ['$scope', function ($scope) {
   console.log('in emailForm controller');
   $scope.submitContact = function () {
-
-
+    console.log('in submitContact');
     var contactInfo = {
       name: $scope.userName,
       email: $scope.userEmail,
       comment: $scope.userComment
-    }
-  };
+    }; // end object
+
+    console.log('contactInfo:', contactInfo);
+  }; // end submit contact function
 }]); // end emailForm controller
