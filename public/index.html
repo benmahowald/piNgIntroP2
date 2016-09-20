@@ -8,13 +8,21 @@
   </head>
   <body ng-app='myApp'>
     <h1>Node Express ANgular Example</h1>
-    <div ng-controller='poeDameron'>
+    <!-- <div ng-controller='poeDameron'>
       What song is horrible?<input type="text" ng-model='badSong'>
       by <input type="text" ng-model='badArtist'>
       <p>
         {{ badSong }} by {{ badArtist }} is a bad song (according to your opinions)
       </p>
-      <button ng-click='addSong()'>Add Song</button>
+      <button ng-click='addSong()'>Add Song</button> -->
+      <form ng-controller='emailForm'>
+        <input type="text" name="name" value="" placeholder="Name"ng-model='userName'>
+        <input type="text" name="email" value="" placeholder="Email"ng-model='userEmail'>
+        <input type="textarea" name="comment" value="" placeholder="Comment"ng-model='userComment'>
+        <p>User name: {{userName}}</p>
+        <p>User email: {{userEmail}}</p>
+        <p>User comment: {{userComment}}</p>     
+      </form>
     </div>
   </body>
 </html>
