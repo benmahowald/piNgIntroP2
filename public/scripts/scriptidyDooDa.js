@@ -29,7 +29,7 @@ var myApp = angular.module('myApp', []);
 //   }; // end add song
 // }]); // end controller
 
-myApp.controller('emailForm', ['$scope', function ($scope) {
+myApp.controller('emailForm', ['$scope', '$http', function ($scope, $http) {
   console.log('in emailForm controller');
   $scope.submitContact = function () {
     console.log('in submitContact');
@@ -38,6 +38,14 @@ myApp.controller('emailForm', ['$scope', function ($scope) {
       email: $scope.userEmail,
       comment: $scope.userComment
     }; // end object
+
+    $http({
+      url: '/testPost',
+      method: 'PUT',
+      data: contactInfo
+    }).then( function (response) {
+        console.log('success in http put route:', response);
+    })
 
     console.log('contactInfo:', contactInfo);
   }; // end submit contact function
