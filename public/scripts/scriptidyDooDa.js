@@ -41,7 +41,7 @@ myApp.controller('emailForm', ['$scope', '$http', function ($scope, $http) {
 
     $http({
       url: '/testPost',
-      method: 'PUT',
+      method: 'POST',
       data: contactInfo
     }).then( function (response) {
         console.log('success in http put route:', response);

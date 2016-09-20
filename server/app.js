@@ -2,6 +2,7 @@ var express = require( 'express' );
 var app = express();
 var path = require( 'path' );
 var bodyParser = require ( 'body-parser' );
+var pg = require('pg');
 var urlencodedParser = bodyParser.urlencoded( { extended: true } );
 var connectionString = process.env.DATABASE_URL || 'postgres:localhost:5432/test';
 var port = process.env.PORT || 3000;
@@ -18,16 +19,27 @@ app.get( '/', function( req, res ){
 }); // end base url
 
 // test post route
-app.post( '/testPost', urlencodedParser, function( req, res ){
-  console.log( 'in testPost' );
+app.post('/testPost', urlencodedParser, function (req, res) {
+  console.log('req.body:', req.body);
+  var data = req.body;
+  pg.connect(connectionString, function (err, client, done) {
+    if (err) {
+      console.log('DB ERROR');
+    }
 
-  console.log( 'req.body:', req.body );
+    var query = client.query('INSERT INTO info (name, email, comment) VALUES ($1, $2, $3)', [data.name, data.email, data.comment]);
 
-  // create an object for response
-  var responseObject = {
-    text: 'i came from server space'
-  }; // end responseObject
-  res.send( responseObject );
+    var listOfInfo = [];
+    query.on('row', function (row) {
+      listOfInfo.push(row);
+
+    }); // end query on row
+
+    query.on('end', function () {
+      done();
+      res.send(listOfInfo);
+    }); // end query on end
+  }); // end pg connect
 }); // end testPost
 
 // static folder
